@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+This software is in the public domain under CC0 1.0 Universal plus a
+Grant of Patent License.
+
+To the extent possible under law, the author(s) have dedicated all
+copyright and related and neighboring rights to this software to the
+public domain worldwide. This software is distributed without any
+warranty.
+
+You should have received a copy of the CC0 Public Domain Dedication
+along with this software (see the LICENSE.md file). If not, see
+<http://creativecommons.org/publicdomain/zero/1.0/>.
+-->
+<entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/entity-definition-3.xsd">
+
+    <entity entity-name="HotwaxAppeasement" package="moqui.task.one" short-alias="hotwax">
+        <field name="hcReturnId" type="id" is-pk="true"/>
+        <field name="hcOrderId" type="id"/>
+        <field name="returnAdjustmentTypeId" type="id"/>
+        <field name="comments" type="text-medium"/>
+        <field name="description" type="text-medium"/>
+        <field name="amount" type="currency-amount"/>
+        <field name="storeId" type="id"/>
+        <field name="orderNumber" type="number-integer"/>
+        <field name="returnDate" type="date-time"/>
+        <field name="orderDate" type="date-time"/>
+    </entity>
+
+    <entity entity-name="ErpAppeasement" package="moqui.task.one" short-alias="erp">
+        <field name="id" type="id" is-pk="true"/>
+        <field name="sl69cp" type="number-integer"/>
+        <field name="sl69qt" type="number-integer"/>
+        <field name="sl69tc" type="number-integer"/>
+        <field name="sl69sk" type="id-long"/>
+        <field name="sl69up" type="id-long"/>
+        <field name="sl69am" type="number-decimal"/>
+        <field name="sl69lc" type="number-integer"/>
+        <field name="sl69tn" type="id-long"/>
+        <field name="sl69dt" type="number-integer"/>
+        <field name="sl69td" type="number-integer"/>
+        <field name="sl69uf" type="text-short"/>
+        <field name="sl69fl" type="text-short"/>
+        <field name="sl69sq" type="number-integer"/>
+        <field name="sl69f2" type="text-short"/>
+        <field name="sl69n1" type="number-integer"/>
+        <field name="sl69n2" type="number-integer"/>
+        <field name="sl69pu" type="text-medium"/>
+        <field name="sl69pd" type="number-integer"/>
+        <field name="sl69pt" type="number-integer"/>
+    </entity>
+
+
+</entities>

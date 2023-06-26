@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/service-definition-3.xsd">
+
+    <service verb="get" noun="HotWaxTotalAmount">
+        <out-parameters>
+            <parameter name="totalAmount"/>
+        </out-parameters>
+        <actions>
+            <entity-find entity-name="hotwax" list="hotwaxRecordsList"/>
+            <set field="totalAmount" from="0.0"/>
+            <iterate list="hotwaxRecordsList" entry="record">
+                <set field="totalAmount" from="totalAmount + record.amount"/>
+            </iterate>
+        </actions>
+    </service>
+
+    <service verb="get" noun="ErpTotalAmount">
+        <out-parameters>
+            <parameter name="totalAmount"/>
+        </out-parameters>
+        <actions>
+            <entity-find entity-name="erp" list="erpRecordsList"/>
+            <set field="totalAmount" from="0.0"/>
+            <iterate list="erpRecordsList" entry="record">
+                <set field="totalAmount" from="totalAmount + record.sl69am"/>
+            </iterate>
+        </actions>
+    </service>
+
+    <service verb="get" noun="HotWaxAndErpTotalAmount">
+        <out-parameters>
+            <parameter name="hotwaxTotalAmount"/>
+            <parameter name="erpTotalAmount"/>
+        </out-parameters>
+        <actions>
+            <entity-find entity-name="hotwax" list="hotwaxRecordsList"/>
+            <set field="hotwaxTotalAmount" from="0.0"/>
+            <iterate list="hotwaxRecordsList" entry="record">
+                <set field="hotwaxTotalAmount" from="hotwaxTotalAmount + record.amount"/>
+            </iterate>
+            <entity-find entity-name="erp" list="erpRecordsList"/>
+            <set field="erpTotalAmount" from="0.0"/>
+            <iterate list="erpRecordsList" entry="record">
+                <set field="erpTotalAmount" from="erpTotalAmount + record.sl69am"/>
+            </iterate>
+        </actions>
+    </service>
+
+    <service verb="get" noun="ErpUniqueRecords">
+        <out-parameters>
+            <parameter name="uniqueRecordsList"/>
+        </out-parameters>
+        <actions>
+            <entity-find entity-name="erp" list="erpRecordsList"/>
+            <iterate list="erpRecordsList" entry="erpRecord">
+                <entity-find entity-name="hotwax" list="hotwaxRecordsList"/>
+                <iterate list="hotwaxRecordsList" entry="hotwaxRecord">
+                    <set field="uniqeRecordList" from="erpRecord.sl69tn != hotwaxRecord.orderNumber ? : erpRecor"/>
+                </iterate>
+            </iterate>
+        </actions>
+    </service>
+
+
+
+
+</services>
