@@ -2,5 +2,25 @@
 
 <services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/service-definition-3.xsd">
 
+    <service verb="get" noun="HotWaxAndErpTotalAmountAndDifference">
+        <out-parameters>
+            <parameter name="hotwaxTotalAmount"/>
+            <parameter name="erpTotalAmount"/>
+            <parameter name="revenueDifference"/>
+        </out-parameters>
+        <actions>
+            <entity-find entity-name="hotwax" list="hotwaxRecordsList"/>
+            <set field="hotwaxTotalAmount" from="0.0"/>
+            <iterate list="hotwaxRecordsList" entry="record">
+                <set field="hotwaxTotalAmount" from="hotwaxTotalAmount + record.amount"/>
+            </iterate>
+            <entity-find entity-name="erp" list="erpRecordsList"/>
+            <set field="erpTotalAmount" from="0.0"/>
+            <iterate list="erpRecordsList" entry="record">
+                <set field="erpTotalAmount" from="erpTotalAmount + record.sl69am"/>
+            </iterate>
+            <set field="revenueDifference" from="erpTotalAmount - hotwaxTotalAmount"/>
+        </actions>
+    </service>
 
 </services>
