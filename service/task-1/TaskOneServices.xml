@@ -2,6 +2,8 @@
 
 <services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/service-definition-3.xsd">
 
+    <!--    Service that will give Sum of amount of HotWax and Erp. Also, the difference between their total amount    -->
+
     <service verb="get" noun="HotWaxAndErpTotalAmountAndDifference">
         <out-parameters>
             <parameter name="hotwaxTotalAmount"/>
