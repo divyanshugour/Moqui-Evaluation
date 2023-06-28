@@ -2,7 +2,9 @@
 
 <services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/service-definition-3.xsd">
 
+    <!--===========================-->
     <!--    Sum of HotWax Amount   -->
+    <!--===========================-->
 
     <service verb="get" noun="HotWaxTotalAmount">
         <out-parameters>
@@ -17,7 +19,9 @@
         </actions>
     </service>
 
+    <!--========================-->
     <!--    Sum of ERP Amount   -->
+    <!--========================-->
 
     <service verb="get" noun="ErpTotalAmount">
         <out-parameters>
@@ -32,7 +36,9 @@
         </actions>
     </service>
 
+    <!--===================================-->
     <!--    Sum of HotWax and ERP Amount   -->
+    <!--===================================-->
 
     <service verb="get" noun="HotWaxAndErpTotalAmount">
         <out-parameters>
@@ -53,39 +59,41 @@
         </actions>
     </service>
 
-    <!--    Approch to get unique records from ERP that are not in HotWax   -->
 
-    <service verb="get" noun="ErpUniqueRecords">
-        <out-parameters>
-            <parameter name="uniqueRecordsList"/>
-        </out-parameters>
-        <actions>
-            <entity-find entity-name="erp" list="erpRecordsList"/>
-            <iterate list="erpRecordsList" entry="erpRecord">
-                <entity-find entity-name="hotwax" list="hotwaxRecordsList"/>
-                <iterate list="hotwaxRecordsList" entry="hotwaxRecord">
-                    <set field="uniqeRecordList" from="erpRecord.sl69tn != hotwaxRecord.orderNumber ? : erpRecor"/>
-                </iterate>
-            </iterate>
-        </actions>
-    </service>
 
-    <!--    Approch to get unique records from HotWax that are not in ERP   -->
+<!--    &lt;!&ndash;    Approch to get unique records from ERP that are not in HotWax   &ndash;&gt;-->
 
-    <service verb="get" noun="HotwaxUniqueRecords">
-        <out-parameters>
-            <parameter name="uniqueRecordsList"/>
-        </out-parameters>
-        <actions>
-            <entity-find entity-name="erp" list="erpRecordsList"/>
-            <iterate list="erpRecordsList" entry="erpRecord">
-                <entity-find entity-name="hotwax" list="hotwaxRecordsList"/>
-                <iterate list="hotwaxRecordsList" entry="hotwaxRecord">
-                    <set field="uniqeRecordList" from="erpRecord.sl69tn != hotwaxRecord.orderNumber ? : erpRecor"/>
-                </iterate>
-            </iterate>
-        </actions>
-    </service>
+<!--    <service verb="get" noun="ErpUniqueRecords">-->
+<!--        <out-parameters>-->
+<!--            <parameter name="uniqueRecordsList"/>-->
+<!--        </out-parameters>-->
+<!--        <actions>-->
+<!--            <entity-find entity-name="erp" list="erpRecordsList"/>-->
+<!--            <iterate list="erpRecordsList" entry="erpRecord">-->
+<!--                <entity-find entity-name="hotwax" list="hotwaxRecordsList"/>-->
+<!--                <iterate list="hotwaxRecordsList" entry="hotwaxRecord">-->
+<!--                    <set field="uniqeRecordList" from="erpRecord.sl69tn != hotwaxRecord.orderNumber ? : erpRecor"/>-->
+<!--                </iterate>-->
+<!--            </iterate>-->
+<!--        </actions>-->
+<!--    </service>-->
+
+<!--    &lt;!&ndash;    Approch to get unique records from HotWax that are not in ERP   &ndash;&gt;-->
+
+<!--    <service verb="get" noun="HotwaxUniqueRecords">-->
+<!--        <out-parameters>-->
+<!--            <parameter name="uniqueRecordsList"/>-->
+<!--        </out-parameters>-->
+<!--        <actions>-->
+<!--            <entity-find entity-name="erp" list="erpRecordsList"/>-->
+<!--            <iterate list="erpRecordsList" entry="erpRecord">-->
+<!--                <entity-find entity-name="hotwax" list="hotwaxRecordsList"/>-->
+<!--                <iterate list="hotwaxRecordsList" entry="hotwaxRecord">-->
+<!--                    <set field="uniqeRecordList" from="erpRecord.sl69tn != hotwaxRecord.orderNumber ? : erpRecor"/>-->
+<!--                </iterate>-->
+<!--            </iterate>-->
+<!--        </actions>-->
+<!--    </service>-->
 
 
 

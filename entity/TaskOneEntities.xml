@@ -15,6 +15,10 @@ along with this software (see the LICENSE.md file). If not, see
 <entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/entity-definition-3.xsd">
 
+    <!--============================================-->
+    <!--    HotWax Appeasement Entity Definition    -->
+    <!--============================================-->
+
     <entity entity-name="HotwaxAppeasement" package="moqui.task.one" short-alias="hotwax">
         <field name="hcReturnId" type="id" is-pk="true"/>
         <field name="hcOrderId" type="id"/>
@@ -27,6 +31,11 @@ along with this software (see the LICENSE.md file). If not, see
         <field name="returnDate" type="date-time"/>
         <field name="orderDate" type="date-time"/>
     </entity>
+
+
+    <!--============================================-->
+    <!--    Erp Appeasement Entity Definition    -->
+    <!--============================================-->
 
     <entity entity-name="ErpAppeasement" package="moqui.task.one" short-alias="erp">
         <field name="id" type="id" is-pk="true"/>
@@ -50,6 +59,51 @@ along with this software (see the LICENSE.md file). If not, see
         <field name="sl69pd" type="number-integer"/>
         <field name="sl69pt" type="number-integer"/>
     </entity>
+
+    <!--=========================================================================-->
+    <!--    View Entity with Same Records of  Erp and HotWax Appeasement Entity  -->
+    <!--=========================================================================-->
+
+    <view-entity entity-name="ErpAndHotwaxSameRecords" package="moqui.evaluation">
+        <member-entity entity-alias="erp" entity-name="ErpAppeasement"/>
+        <member-entity entity-alias="hotwax" entity-name="HotwaxAppeasement" join-from-alias="erp">
+            <key-map field-name="sl69tn" related="orderNumber"/>
+        </member-entity>
+        <alias name="orderNumber" entity-alias="hotwax"/>
+        <alias name="sl69tn" entity-alias="erp"/>
+        <alias name="amount" entity-alias="hotwax"/>
+        <alias name="sl69am" entity-alias="erp"/>
+    </view-entity>
+
+    <!--==========================================================================================================-->
+    <!--    View Entity with Same Records of  Erp and HotWax Appeasement Entity and Unique Records of Erp Entity  -->
+    <!--==========================================================================================================-->
+
+    <view-entity entity-name="ErpLeftJoinHotwaxRecords" package="moqui.evaluation">
+        <member-entity entity-alias="erp" entity-name="ErpAppeasement"/>
+        <member-entity entity-alias="hotwax" entity-name="HotwaxAppeasement" join-from-alias="erp" join-optional="true">
+            <key-map field-name="sl69tn" related="orderNumber"/>
+        </member-entity>
+        <alias name="orderNumber" entity-alias="hotwax"/>
+        <alias name="sl69tn" entity-alias="erp"/>
+        <alias name="amount" entity-alias="hotwax"/>
+        <alias name="sl69am" entity-alias="erp"/>
+    </view-entity>
+
+    <!--=============================================================================================================-->
+    <!--    View Entity with Same Records of  Erp and HotWax Appeasement Entity and Unique Records of HotWax Entity  -->
+    <!--=============================================================================================================-->
+
+    <view-entity entity-name="HotwaxLeftJoinErpRecords" package="moqui.evaluation">
+        <member-entity entity-alias="hotwax" entity-name="HotwaxAppeasement"/>
+        <member-entity entity-alias="erp" entity-name="ErpAppeasement" join-from-alias="hotwax" join-optional="true">
+            <key-map field-name="orderNumber" related="sl69tn"/>
+        </member-entity>
+        <alias name="orderNumber" entity-alias="hotwax"/>
+        <alias name="sl69tn" entity-alias="erp"/>
+        <alias name="amount" entity-alias="hotwax"/>
+        <alias name="sl69am" entity-alias="erp"/>
+    </view-entity>
 
 
 </entities>
